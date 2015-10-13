@@ -1,4 +1,4 @@
-# django rest api example
+# django rest api example!
 
 This is a very brief and readable REST API written in python and backed by django.
           
