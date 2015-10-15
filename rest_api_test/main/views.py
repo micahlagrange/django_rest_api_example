@@ -32,9 +32,12 @@ from django.views.decorators.csrf import csrf_exempt
 from main.models import RestUser
 
 
+def decode_request(req):
+    return request.body.decode('utf-8'))
+
 @csrf_exempt
 def make_user(request):
-    payload = json.loads(request.body.decode('utf-8'))
+    payload = json.loads(decode_request(request))
 
     if request.method == 'PUT':
         u = RestUser()
@@ -60,7 +63,7 @@ def user_by_id(request, user_id):
         return JsonResponse(res, status=200)
 
     elif request.method == 'POST':
-        payload = json.loads(request.body.decode('utf-8'))
+        payload = json.loads(decode_request(request))
 
         try:
             u.name = payload['name']
