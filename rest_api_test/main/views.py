@@ -33,7 +33,10 @@ from main.models import RestUser
 
 
 def decode_request(req):
-    return json.loads(req.body.decode('utf-8'))
+    try:
+        return json.loads(req.body.decode('utf-8'))
+    except Exception:
+        return json.loads(req.body)
 
 @csrf_exempt
 def make_user(request):
