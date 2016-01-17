@@ -1,4 +1,4 @@
-# django rest api example
+# django rest api example!
 
 This is a very brief and readable REST API written in python and backed by django.
           
@@ -20,4 +20,4 @@ There is only one model this API can create/edit/delete/get: RestUser in the 'ma
       
   To delete a user with user_id 123, send an http DELETE to /users/123
 
-Questions, criticism welcome: turner.micah@gmail.com
+Questions, criticism always welcome: turner.micah@gmail.com
