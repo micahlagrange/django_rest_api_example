@@ -40,9 +40,9 @@ def decode_request(req):
 
 @csrf_exempt
 def make_user(request):
-    payload = decode_request(request)
-
     if request.method == 'PUT':
+    	payload = decode_request(request)
+
         u = RestUser()
         u.name = payload['name']
         u.mail = payload['mail']
@@ -54,9 +54,8 @@ def make_user(request):
 
 @csrf_exempt
 def user_by_id(request, user_id):
-    u = get_object_or_404(RestUser, pk=user_id)
-
     if request.method == 'GET':
+    	u = get_object_or_404(RestUser, pk=user_id)
         res = dict(
             user_id=u.pk,
             name=u.name,
