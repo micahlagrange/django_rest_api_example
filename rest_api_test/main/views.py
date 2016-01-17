@@ -41,7 +41,7 @@ def decode_request(req):
 @csrf_exempt
 def make_user(request):
     if request.method == 'PUT':
-    	payload = decode_request(request)
+        payload = decode_request(request)
 
         u = RestUser()
         u.name = payload['name']
@@ -50,12 +50,14 @@ def make_user(request):
         u.save()
 
         return JsonResponse(data=model_to_dict(u), status=201)
+    else:
+        return JsonResponse(data={"error": "incorrect HTTP method used"}, status=403)
 
 
 @csrf_exempt
 def user_by_id(request, user_id):
     if request.method == 'GET':
-    	u = get_object_or_404(RestUser, pk=user_id)
+        u = get_object_or_404(RestUser, pk=user_id)
         res = dict(
             user_id=u.pk,
             name=u.name,
